@@ -1,5 +1,7 @@
 <aura:component description="Open_Modal_Form" extends="c:LightningTools" implements="force:appHostable">
 
+    <aura:attribute name="columns" type="String" default="1"/>
+
     <lightning:overlayLibrary aura:id="overlayLib"/>
 
     <lightning:card title="">

@@ -1,0 +1,37 @@
+<aura:component description="Open_Modal_Form" extends="c:LightningTools" implements="force:appHostable">
+
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+
+    <lightning:card title="">
+
+        <lightning:layout verticalAlign="end">
+
+            <lightning:layoutItem padding="around-small">
+
+                <div style="width: 150px;">
+
+                    <lightning:select label="Number of columns" value="{!v.columns}">
+
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+
+                    </lightning:select>
+
+                </div>
+
+            </lightning:layoutItem>
+
+            <lightning:layoutItem padding="around-small">
+
+                <lightning:button label="Open new Account modal" onclick="{!c.openNewAccountModal}"/>
+
+            </lightning:layoutItem>
+
+        </lightning:layout>
+
+    </lightning:card>
+
+</aura:component>

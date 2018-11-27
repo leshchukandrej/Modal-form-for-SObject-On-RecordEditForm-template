@@ -1,0 +1,58 @@
+<!--
+ - Created by ctuser on 14.11.2018.
+ -->
+
+<aura:component description="RecordEditForm">
+
+    <aura:attribute name="sObjectType" type="String" required="true"/>
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="recordTypeId" type="String"/>
+
+    <aura:attribute name="columns" type="Decimal" default="1"/>
+    <aura:attribute name="height" type="Decimal" default="1"/>
+
+    <aura:attribute name="fields" type="String[]" default="['Name', 'Phone']"/>
+
+    <aura:registerEvent name="onSubmit" type="c:ClickEvent"/>
+    <aura:registerEvent name="onCancel" type="c:ClickEvent"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+
+    <lightning:overlayLibrary aura:id="overlayLib"/>
+
+    <lightning:recordEditForm objectApiName="{!v.sObjectType}"
+                              recordId="{!v.recordId}"
+                              recordTypeId="{!v.recordTypeId}"
+                              onload="{!c.onLoad}"
+                              onsubmit="{!c.submitButtonEvent}">
+
+        <c:SpinnerContainer height="50px" afterLoadHeight="{!v.height +'px'}" aura:id="spinnerContainer">
+
+            <lightning:layout multipleRows="true">
+
+                <aura:iteration var="field" items="{!v.fields}" indexVar="i">
+
+                    <lightning:layoutItem size="{!12/v.columns}" padding="horizontal-medium">
+
+                        <lightning:inputField fieldName="{!field}"/>
+
+                    </lightning:layoutItem>
+
+                </aura:iteration>
+
+            </lightning:layout>
+
+        </c:SpinnerContainer>
+
+        <br/>
+
+        <lightning:buttonGroup class="slds-align--absolute-center">
+
+            <lightning:button label="Cancel" onclick="{!c.closeButtonEvent}"/>
+            <lightning:button label="Submit" type="submit"/>
+
+        </lightning:buttonGroup>
+
+    </lightning:recordEditForm>
+
+</aura:component>

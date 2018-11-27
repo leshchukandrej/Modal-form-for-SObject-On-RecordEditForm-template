@@ -1,0 +1,26 @@
+<!--
+ - Created by User on 24.07.2018.
+ -->
+
+<aura:component description="SpinnerContainer">
+
+    <aura:attribute name="loading" type="Boolean" default="true"/>
+    <aura:attribute name="alternativeText" type="String" default="Loading..."/>
+    <aura:attribute name="variant" type="String" default="brand"/>
+    <aura:attribute name="size" type="String" default="large"/>
+    <aura:attribute name="height" type="String" description="Pre-occupied height"/>
+    <aura:attribute name="afterLoadHeight" type="String" description="After load height"/>
+
+    <div>
+        <div class="slds-is-relative smooth-open-panel" style="{!
+                and(not(empty(v.height)), v.loading) ? ('height:' + v.height)
+                    : not(empty(v.afterLoadHeight)) ? ('height:' + v.afterLoadHeight) : ''}">
+            {!v.body}
+
+            <lightning:spinner class="{!v.loading? '' : 'slds-hide'}"
+                               alternativeText="{!v.alternativeText}"
+                               variant="{!v.variant}" size="{!v.size}"/>
+        </div>
+    </div>
+
+</aura:component>

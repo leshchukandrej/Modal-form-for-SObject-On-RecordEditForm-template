@@ -1,0 +1,10 @@
+/**
+ * Created by User on 24.07.2018.
+ */
+.THIS {
+}
+
+.THIS .smooth-open-panel {
+    transition: 1s;
+    overflow: hidden;
+}
